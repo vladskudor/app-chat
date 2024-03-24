@@ -1,0 +1,85 @@
+@import "../global-styles/global.styles";
+
+.main-block-chats{
+  width: 100%;
+  max-width: 1920px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  position: relative;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.block-chats{
+
+}
+
+.block-button-menu-status{
+  z-index: 999999;
+  position: absolute;
+  cursor: pointer;
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+
+.logo-block{
+  padding: 0 5%;
+}
+
+.side-menu{
+  height: 100vh;
+  overflow-y: auto;
+  background: $lightblue;
+  @media (max-width: 600px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+}
+
+.chats{
+  padding: 3%;
+  height: 100vh;
+  overflow-y: auto;
+  background: #77b3d4;
+  li{
+    list-style: none;
+  }
+  @media (max-width: 600px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 25% 1%;
+  }
+}
+
+.block-message{
+  display: block;
+  position: relative;
+  width: 200px;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 10px 15px;
+}
+
+.block-buttons-messages{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  input{
+    font-size: $fz;
+    border: 0;
+    border-radius: 5px 0 0 5px;
+    height: 55px;
+  }
+  button{
+    font-size: $fz;
+    border: 0;
+    border-radius: 0 10px 10px 0;
+    padding: 15px 25%;
+  }
+}

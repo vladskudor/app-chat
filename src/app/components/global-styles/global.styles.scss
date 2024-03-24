@@ -1,0 +1,27 @@
+$fz: 20px;
+$white: #fff;
+$black: #000;
+$lightblue: lightblue;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Calibri;
+}
+
+li{
+  cursor: pointer;
+  transition: .3s;
+  padding: 10px 25px;
+  font-size: 30px;
+  border-bottom: 3px solid $white;
+  &::first-letter{
+    text-transform: uppercase;
+  }
+  &:hover{
+    padding: 10px 35px;
+    color: $lightblue;
+    background: $white;
+  }
+}

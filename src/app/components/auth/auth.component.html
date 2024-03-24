@@ -1,0 +1,16 @@
+<div class="block-auth">
+  <img src="/assets/logo.png" alt="">
+  <h1>Authorisation</h1>
+  <p>Please sign - in to continue</p>
+  <input type="text" [(ngModel)]="svc.name" id="name" placeholder="Enter your name" id="name" />
+  <div class="block-button-login">
+
+    <a (click)="send()">
+      Log in
+    </a>
+  </div>
+
+  <a style="color: #000;font-size: 20px;" [routerLink]="['/register']">
+    Create account
+  </a>
+</div>
