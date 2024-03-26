@@ -38,24 +38,32 @@ export class ServiceService {
 
   public sendMessage(): void{
     this.sharedMessages = [];
-    this.writeToUser.arrMessages.push({
-      sendToUser: this.currentUser.name,
-      message: this.newMessage,
-      date: new Date()
-    });
-    localStorage.setItem('writeToUser' , JSON.stringify(this.writeToUser));
-    localStorage.setItem('users' , JSON.stringify(this.users));
-    this.currentUser.arrMessages.push({
-      sendToUser: this.currentUser.name,
-      message: this.newMessage,
-      date: new Date()  
-    });
-    localStorage.setItem('currentUser' , JSON.stringify(this.currentUser));
-    localStorage.setItem('users' , JSON.stringify(this.users));
-    let arr1 = this.writeToUser.arrMessages.filter((user) => user.sendToUser === this.currentUser.name);
-    let arr2 = this.currentUser.arrMessages.filter((user) => user.sendToUser === this.writeToUser.name)
-    this.sharedMessages = [...arr1 , ...arr2].sort((a,b) => Date.parse(a.date) - Date.parse(b.date));
-    this.newMessage = '';
+    if(this.newMessage.length <= 0){
+      let arr1 = this.writeToUser.arrMessages.filter((user) => user.sendToUser === this.currentUser.name);
+      let arr2 = this.currentUser.arrMessages.filter((user) => user.sendToUser === this.writeToUser.name)
+      this.sharedMessages = [...arr1 , ...arr2].sort((a,b) => Date.parse(a.date) - Date.parse(b.date));
+      return;
+    }else{
+      this.writeToUser.arrMessages.push({
+        sendToUser: this.currentUser.name,
+        message: this.newMessage,
+        date: new Date()
+      });
+      localStorage.setItem('writeToUser' , JSON.stringify(this.writeToUser));
+      localStorage.setItem('users' , JSON.stringify(this.users));
+      this.currentUser.arrMessages.push({
+        sendToUser: this.currentUser.name,
+        message: this.newMessage,
+        date: new Date()  
+      });
+      localStorage.setItem('currentUser' , JSON.stringify(this.currentUser));
+      localStorage.setItem('users' , JSON.stringify(this.users));
+      let arr1 = this.writeToUser.arrMessages.filter((user) => user.sendToUser === this.currentUser.name);
+      let arr2 = this.currentUser.arrMessages.filter((user) => user.sendToUser === this.writeToUser.name)
+      this.sharedMessages = [...arr1 , ...arr2].sort((a,b) => Date.parse(a.date) - Date.parse(b.date));
+      this.newMessage = '';
+    }
+
   }
 
   public exit(): void{
