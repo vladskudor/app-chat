@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
         return;
       }
     }
-    !existUser ? this.accesUnlock() : alert('false');
+    !existUser ? this.accesUnlock() : () => alert('User exists');
   }
 
   public accesUnlock(): void{

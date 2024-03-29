@@ -11,6 +11,8 @@ export class ServiceService {
   public newMessage: string = '';
   public users: any = JSON.parse(localStorage.getItem('users')) || [];
   public sharedMessages: any = [];
+  public matches: any = window.matchMedia('(max-width: 600px)').matches;
+  public menu: boolean = !this.matches ? true : false;
 
   constructor(public router: Router) { }
 
@@ -34,6 +36,9 @@ export class ServiceService {
     let arr1 = this.writeToUser.arrMessages.filter((user) => user.sendToUser === this.currentUser.name);
     let arr2 = this.currentUser.arrMessages.filter((user) => user.sendToUser === this.writeToUser.name)
     this.sharedMessages = [...arr1 , ...arr2].sort((a , b) => Date.parse(a.date) - Date.parse(b.date));
+    if(this.matches){
+      this.menu = false;
+    }
   }
 
   public sendMessage(): void{
